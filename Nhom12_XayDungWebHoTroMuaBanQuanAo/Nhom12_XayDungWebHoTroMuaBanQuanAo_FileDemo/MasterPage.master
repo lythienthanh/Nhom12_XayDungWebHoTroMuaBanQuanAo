@@ -1,0 +1,121 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="DinhDang.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 146px;
+        }
+        .auto-style3 {
+            text-align: left;
+        }
+        .auto-style4 {
+            height: 30px;
+            text-align: right;
+            width: 238px;
+        }
+        .KhungTrang {
+            height: 50px;
+        }
+        .auto-style5 {
+            text-align: center;
+        }
+        .auto-style6 {
+            height: 30px;
+            text-align: left;
+            width: 308px;
+        }
+        .auto-style7 {
+            text-align: left;
+            width: 62px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+     <div class="KhungTrang">
+         <table style="width: 100%; height: auto;">
+             <tr>
+                 <td class="auto-style1">
+                     <asp:ImageButton ID="ImageButton1" runat="server" Height="49px" ImageUrl="~/Image/LoGo.PNG" OnClick="ImageButton1_Click" Width="142px" />
+                 </td>
+                 <td>
+                    <ul id="menu">
+                        <li><a href="Sale.aspx" style="font-size: 10px">SALE </a></li>
+                        <li> <a href="TrangPhuc.aspx"style="font-size: 10px">TRANG PHỤC</a></li>
+                        <li> <a href="TuiXach.aspx"style="font-size: 10px">TÚI XÁCH</a></li>  
+                        <li> <a href="Giay.aspx"style="font-size: 10px">GIÀY</a></li>
+                        <li> <a href="PhuKien.aspx"style="font-size: 10px">PHỤ KIỆN</a></li> 
+
+                                <% if (Session["tenuser"] == null)
+           {%>
+               <li><a href="DangKy.aspx"style="font-size: 10px">ĐĂNG KÝ</a></li>
+               <li><a href="DangNhap.aspx"style="font-size: 10px">ĐĂNG NHẬP</a></li>
+
+        <%
+           }
+           else
+           {
+                                       
+           %>
+               <li><a href="#"style="font-size: 10px">Xin chào, bạn <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a></li>
+               <li><a href="GioHang.aspx"style="font-size: 10px">Giỏ hàng 
+                   <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+                   </a></li>
+                        
+               <li><a href="DangNhap.aspx"style="font-size: 10px">THOÁT</a></li>
+               <li><a href="LSGD.aspx"style="font-size: 10px">LỊCH SỬ GIAO DỊCH</a></li>
+                        <% if (string.Compare(Session["tenuser"].ToString(),"admin") == 0) 
+                      {%>
+                        <li><a href="ThemSanPham.aspx"style="font-size: 10px">THÊM SẢN PHẨM</a></li>
+                        <li><a href="XoaSanPham.aspx"style="font-size: 10px">XOÁ SẢN PHẨM</a></li>
+                        <li><a href="CapNhatTTHD.aspx"style="font-size: 10px">CẬP NHẬT TTHĐ</a></li>
+                        <%} %>
+
+
+          <%} %> 
+                                                               <li>
+                   <asp:TextBox ID="TextBox1" runat="server" Width="94px"></asp:TextBox>
+                   <asp:Button ID="Button1" runat="server" Height="21px" Text="Tìm Kiếm" OnClick="Button1_Click" />
+                   <</li>
+                    </ul>
+                 </td>
+             </tr>
+             
+         </table>
+     </div>  
+        <div><asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server"><a href="#">Xin chào, bạn
+            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            </a></asp:ContentPlaceHolder></div>
+        
+
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        <footer>
+            <div>
+                <table style="width:100%;">
+                    <tr><td class="auto-style4"><i class="material-icons"> home</i> </td><td class="auto-style6">655/49 Lê Trọng Tấn, Bình Hưng Hoà, Bình Tân</td><td class="auto-style7" rowspan="2" style="text-align: center">
+                        <a href="https://www.facebook.com/nguyenthitientienn" target="_blank" title="Facebook" class="socials-footer">
+                            <img src="Image/Footer/facebook.PNG" alt="Facebook" style="height: 65px; width: 76px"></a></td><td class="auto-style3" rowspan="2" style="text-align: center">
+                        <a href="https://www.instagram.com/neitcull/" target="_blank" title="Instagram" class="socials-footer">
+                            <img src="Image/Footer/instagram.png" alt="Instagram" style="height: 65px; width: 76px; float: left; text-align: justify;"></a></td></tr>
+                    <tr><td class="auto-style4"><i class="material-icons"> phone </i> </td><td class="auto-style6">0914 16 18 31 - 086 7447 101</td></tr>
+                    <tr><td colspan="4" class="auto-style5"><a href="HuongDanMuaHang.aspx" style="font-size:20px;">Hướng Dẫn Mua Hàng</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="BaoHanhVaDoiTra.aspx" style="font-size:20px;">Bảo Hành Và Đổi Trả</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="ThongTinThem.aspx" style="font-size:20px;">Thông Tin Thêm</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="TuyenDung.aspx" style="font-size:20px;">Tuyển Dụng</a></td></tr>
+                    </table>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
